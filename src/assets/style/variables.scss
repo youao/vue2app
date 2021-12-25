@@ -1,0 +1,105 @@
+$blue: #409eff;
+$blue-1: #8cc5ff;
+$blue-2: #a0cfff;
+$blue-3: #b3d8ff;
+$blue-4: #ecf5ff;
+
+$green: #67c23a;
+$green-1: #a4da89;
+$green-2: #b3e19d;
+$green-3: #c2e7b0;
+$green-4: #f0f9eb;
+
+$orange: #e6a23c;
+$orange-1: #f0c78a;
+$orange-2: #f3d19e;
+$orange-3: #f5dab1;
+$orange-4: #fdf6ec;
+
+$red: #f56c6c;
+$red-1: #f9a7a7;
+$red-2: #fab6b6;
+$red-3: #fbc4c4;
+$red-4: #fef0f0;
+
+$gray-3: #303133;
+$gray-6: #606266;
+$gray-9: #909399;
+$gray-b: #bcbec2;
+$gray-c: #c0c4cc;
+$gray-d: #dcdfe6;
+$gray-e: #e4e7ed;
+$gray-eb: #ebeef5;
+$gray-f2: #f2f6fc;
+$gray-f: #f4f4f5;
+
+$black: #000;
+$white: #fff;
+
+.button-hover {
+    position: relative;
+
+    &:active::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        background: rgba(128, 128, 128, 0.1);
+    }
+}
+
+input::-webkit-input-placeholder {
+    color: $gray-9;
+}
+
+.text-c {
+    text-align: center;
+}
+.text-l {
+    text-align: left;
+}
+.text-r {
+    text-align: right;
+}
+
+.flex-con {
+    flex: 1;
+}
+
+.fmix-align {
+    display: flex;
+    align-items: center;
+}
+
+.fmix-align-sa {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.fmix-align-sb {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fmix-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fmix-center-v {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.fmix-v {
+    display: flex;
+    flex-direction: column;
+}
