@@ -6,7 +6,7 @@ import store from './store'
 import Rem from './utils/rem'
 Rem();
 
-import Page from "./components/bscroll/page"
+import Page from "./components/page"
 Vue.component('Page', Page)
 
 import Toast from './components/popup/toast'

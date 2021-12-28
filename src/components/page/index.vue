@@ -10,6 +10,7 @@
     <ScrollList
       ref="scroll"
       class="flex-con"
+      toTop
       :pulldown="refresh"
       :bounce="bounce"
       :pullUpThreshold="threshold"
@@ -66,6 +67,7 @@ export default {
       return this.$route.meta.title || "";
     },
   },
+  mounted() {},
   methods: {
     onTapLeft() {
       if (this.onLeft) {

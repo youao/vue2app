@@ -9,15 +9,25 @@
       </div>
       <slot />
     </div>
+    <Icon
+      name="top"
+      class="fix-con button-hover"
+      :class="{ show: toTopShow }"
+      @click.native="scrollToTop(1000)"
+    />
   </div>
 </template>
 
 <script>
 import BScroll from "better-scroll";
+import Icon from "@/components/icon";
 const dpr = window.devicePixelRatio;
 
 export default {
   name: "ScrollList",
+  components: {
+    Icon,
+  },
   props: {
     pulldown: {
       type: Boolean,
@@ -64,6 +74,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    toTop: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -71,6 +85,7 @@ export default {
       canRefresh: false,
       refreshing: false,
       refreshed: false,
+      toTopShow: false,
     };
   },
   computed: {
@@ -104,20 +119,28 @@ export default {
       click: true,
     });
 
-    if (this.pulldown) {
-      this.scroll.on("scroll", this.scrollHandler);
-      this.scroll.on("pullingDown", this.pullingDownHandler);
-    }
+    this.scroll.on("scroll", this.scrollHandler);
 
-    if (this.pullUp) {
-      this.scroll.on("pullingUp", () => {
-        this.$emit("reach-bottom");
-      });
+    if (this.pulldown) {
+      this.scroll.on("pullingDown", this.pullingDownHandler);
     }
   },
   methods: {
     scrollHandler(res) {
-      this.canRefresh = res.y >= this.threshold;
+      if (this.pulldown) {
+        this.canRefresh = res.y >= this.threshold;
+      }
+
+      const el = this.$refs.wrap;
+      if (this.pullUp) {
+        if (el.offsetHeight - res.y + this.pullUpThreshold >= el.scrollHeight) {
+          this.$emit("reach-bottom");
+        }
+      }
+
+      if (this.toTop) {
+        this.toTopShow = -res.y > el.offsetHeight;
+      }
     },
     pullingDownHandler() {
       this.refreshing = true;
@@ -139,6 +162,9 @@ export default {
     finishPullUp() {
       this.scroll.finishPullUp();
     },
+    scrollToTop(time) {
+      this.scroll.scrollTo(0, 0, time);
+    },
   },
 };
 </script>
@@ -154,5 +180,25 @@ export default {
   padding: 0.1rem 0;
   text-align: center;
   transform: translateY(-100%);
+}
+.fix-con {
+  width: 0.8rem;
+  height: 0.8rem;
+  @extend .fmix-center;
+  position: absolute;
+  bottom: -1rem;
+  right: 0.1rem;
+  font-size: 0.4rem;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0.02rem 0.01rem rgba($color: #000000, $alpha: 0.1);
+  overflow: hidden;
+  opacity: 0;
+  transition: bottom 0.3s, opacity 0.3s;
+
+  &.show {
+    bottom: 1rem;
+    opacity: 1;
+  }
 }
 </style>
