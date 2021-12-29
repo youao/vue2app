@@ -56,7 +56,11 @@ export default {
       current: 0,
     };
   },
-  mounted() {},
+  mounted() {
+    this.$request.get("api/set").then((res) => {
+      console.log(res);
+    });
+  },
   methods: {
     onSlideChange(e) {
       this.current = e;

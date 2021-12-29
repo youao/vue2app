@@ -19,6 +19,9 @@ toastInstall(Vue, Toast)
 dialogInstall(Vue, Dialog)
 actionsheetInstall(Vue, Actionsheet)
 
+import request from "@/utils/request"
+Vue.prototype.$request = request
+
 Vue.config.productionTip = false
 
 new Vue({

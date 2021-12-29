@@ -1,4 +1,4 @@
-const { VUE_APP_ENV, VUE_APP_MODE } = process.env;
+const { VUE_APP_ENV, VUE_APP_MODE, VUE_APP_URL } = process.env;
 console.log(VUE_APP_ENV, VUE_APP_MODE)
 
 const fs = require('fs')
@@ -33,10 +33,17 @@ module.exports = {
     chainWebpack: config => {
         // 配置svg
         configSvgLoader(config, 'src/assets/icon/svg')
-
     },
     devServer: {
-        port: 8090
+        port: 8090,
+        proxy: {
+            '/meiquan': {
+                target: VUE_APP_URL,
+                pathRewrite: {
+                    '^/meiquan': VUE_APP_URL
+                }
+            }
+        }
     },
     css: {
         loaderOptions: {
