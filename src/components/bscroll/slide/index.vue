@@ -30,6 +30,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    start: {
+      type: Number,
+      default: 0,
+    },
     space: {
       type: Number,
       default: 1,
@@ -50,19 +54,25 @@ export default {
   mounted() {
     const interval =
       this.autoplay && this.autoplay.delay ? this.autoplay.delay : 3000;
-      
+
     const options = {
       scrollX: !this.vertical,
       scrollY: this.vertical,
       slide: {
         loop: this.loop,
         autoplay: !!this.autoplay,
-        interval
+        interval,
       },
       momentum: false,
       bounce: false,
       probeType: 3,
     };
+
+    if (!this.vertical) {
+      options.startPageXIndex = this.start;
+    } else {
+      options.startPageYIndex = this.start;
+    }
 
     this.slide = new BScroll(this.$refs.content, options);
 
