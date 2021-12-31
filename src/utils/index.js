@@ -74,3 +74,34 @@ export function objectExtends() {
     }
     return target;
 }
+
+export function numToTime(num, type) {
+    const t = new Date().getTime();
+    switch (type) {
+        case 'ms':
+            return t + num;
+        case 's':
+        case 'second':
+            return t + num * 1000;
+        case 'i':
+        case 'minutes':
+            return t + num * 1000 * 60;
+        case 'h':
+        case 'hour':
+            return t + num * 1000 * 60 * 60;
+        case 'd':
+        case 'day':
+            return t + num * 1000 * 60 * 60 * 24;
+        case 'w':
+        case 'week':
+            return t + num * 1000 * 60 * 60 * 24 * 7;
+        case 'm':
+        case 'month':
+            return t + num * 1000 * 60 * 60 * 24 * 30;
+        case 'y':
+        case 'year':
+            return t + num * 1000 * 60 * 60 * 24 * 365;
+        default:
+            return num;
+    }
+}

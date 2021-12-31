@@ -57,7 +57,9 @@ export default {
     };
   },
   mounted() {
-    this.$request.get("api/set").then((res) => {
+    this.$get("api/set", "", {
+      cache: 300,
+    }).then((res) => {
       console.log(res);
     });
   },

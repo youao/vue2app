@@ -12,12 +12,12 @@ const routes = [
   {
     path: '*',
     name: 'notFound',
-    component: () => import(`@/views/index/404.vue`)
+    component: () => import(`@/views/404.vue`)
   },
 ]
 
 const router = new VueRouter({
-  // mode: 'history',
+  mode: 'history',
   routes
 })
 

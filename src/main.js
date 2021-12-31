@@ -20,7 +20,8 @@ dialogInstall(Vue, Dialog)
 actionsheetInstall(Vue, Actionsheet)
 
 import request from "@/utils/request"
-Vue.prototype.$request = request
+Vue.prototype.$get = request.get
+Vue.prototype.$post = request.post
 
 Vue.config.productionTip = false
 
