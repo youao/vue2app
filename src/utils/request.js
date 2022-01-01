@@ -51,7 +51,7 @@ const request = (method, url, data = {}, options = {}) => {
             if (cacheKey) {
                 storage.set(cacheKey, data, { type: 's', value: options.cache });
             }
-            return resolve(data.r, data)
+            return resolve(data)
         }).catch(err => {
             console.log(err);
             return reject('请求出错！');

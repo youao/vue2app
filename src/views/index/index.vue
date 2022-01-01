@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Banner from "@/components/bscroll/slide_plus/banner";
 
 export default {
@@ -12,20 +13,18 @@ export default {
     Banner,
   },
   data() {
-    return {
-      banner: [],
-    };
+    return {};
   },
-  mounted() {
-    this.$get("api/set", "", {
-      cache: 300,
-    }).then((res) => {
-      console.log(res);
-      this.banner = res.appinfo.slides;
-    });
+  computed: {
+    ...mapState({
+      banner(state) {
+        if (!state.app.appInfo) return [];
+        return state.app.appInfo.slides;
+      },
+    }),
   },
+  mounted() {},
   methods: {
-
     onReachBottom() {
       console.log("asa");
     },
@@ -33,7 +32,4 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.banner {
-  height: 4rem;
-}
 </style>

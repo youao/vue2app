@@ -6,7 +6,9 @@
 
 <script>
 export default {
-  mounted() {},
+  created() {
+    this.$store.dispatch('APPINFO')
+  },
 };
 </script>
 
