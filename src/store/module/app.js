@@ -30,16 +30,16 @@ export default {
             if (state.appInfo && !force) {
                 return Promise.resolve(state.appInfo);
             }
-            return new Promise(reslove => {
+            return new Promise((reslove, reject) => {
                 request.get("api/set", '', {
                     cache: 60
                 }).then((res) => {
                     commit("UPDATE_APPINFO", res.r.appinfo);
                     reslove(res.r.appinfo);
+                }).catch((err) => {
+                    reject(err);
                 });
-            }).catch(() => {
-
-            });
+            })
         }
     }
 }

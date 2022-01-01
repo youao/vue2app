@@ -1,5 +1,5 @@
 <template>
-  <Page custom @reach-bottom="onReachBottom">
+  <Page ref="page" custom refresh @refresh="onRefresh" @reach-bottom="onReachBottom">
     <Banner :list="banner"></Banner>
   </Page>
 </template>
@@ -25,6 +25,11 @@ export default {
   },
   mounted() {},
   methods: {
+    onRefresh() {
+      this.$store.dispatch("APPINFO", 1).finally(() => {
+        this.$refs.page.finishRefresh();
+      });
+    },
     onReachBottom() {
       console.log("asa");
     },

@@ -82,12 +82,6 @@ export default {
     finishRefresh() {
       this.$refs.scroll.finishRefresh();
     },
-    startPullUp() {
-      this.$refs.scroll.startPullUp();
-    },
-    finishPullUp() {
-      this.$refs.scroll.finishPullUp();
-    },
   },
 };
 </script>

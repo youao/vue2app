@@ -104,18 +104,11 @@ export default {
         }
       : false;
 
-    const pullUpLoad = this.pullUp
-      ? {
-          threshold: this.pullUpThreshold,
-        }
-      : false;
-
     this.scroll = new BScroll(this.$refs.wrap, {
       scrollY: true,
       observeDOM: true,
       pullDownRefresh,
-      pullUpLoad,
-      bounce: this.bounce,
+      bounce: this.bounce || this.pulldown,
       click: true,
     });
 
@@ -155,12 +148,6 @@ export default {
           this.refreshed = false;
         }, 1000);
       }, 300);
-    },
-    startPullUp() {
-      this.scroll.openPullUp();
-    },
-    finishPullUp() {
-      this.scroll.finishPullUp();
     },
     scrollToTop(time) {
       this.scroll.scrollTo(0, 0, time);

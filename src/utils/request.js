@@ -34,7 +34,7 @@ const request = (method, url, data = {}, options = {}) => {
                 cacheKey = md5(options.url) + "_http_cache";
                 const cacheRes = storage.get(cacheKey);
                 if (cacheRes) {
-                    return resolve(cacheRes.r, cacheRes);
+                    return resolve(cacheRes);
                 }
             }
         } else {
