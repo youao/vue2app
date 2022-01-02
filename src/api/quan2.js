@@ -27,6 +27,17 @@ const Quan2 = {
     },
 }
 
+
+export function getCid() {
+    return Quan2.get("cid", '', {
+        cache: 3600
+    })
+}
+
+export function getAppGoods(data) {
+    return Quan2.get("app_goods", data)
+}
+
 export function getJdGoods(data) {
     return Quan2.get("jd_goods", data)
 }

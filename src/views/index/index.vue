@@ -1,18 +1,20 @@
 <template>
   <Page ref="page" custom refresh @refresh="onRefresh" @reach-bottom="onReachBottom">
     <Banner :list="banner"></Banner>
+    <Button to="/taobao/list">淘宝列表</Button>
+    <Button to="/jd/list">京东列表</Button>
   </Page>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import Banner from "@/components/bscroll/slide_plus/banner";
-import {getJdGoods} from '@/api/quan2';
-import {getJdSearch} from '@/api/meiquan';
+import Button from "@/components/button";
 
 export default {
   components: {
     Banner,
+    Button
   },
   data() {
     return {};
@@ -26,8 +28,6 @@ export default {
     }),
   },
   mounted() {
-    getJdGoods()
-    // getJdSearch();
   },
   methods: {
     onRefresh() {

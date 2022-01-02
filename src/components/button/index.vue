@@ -50,6 +50,7 @@ export default {
       type: Boolean,
       default: false,
     },
+    to: String
   },
   computed: {
     canClick() {
@@ -70,7 +71,8 @@ export default {
   methods: {
     onButtonClick() {
       if (!this.canClick) return;
-      this.$emit("tap");
+      if (this.to) return this.$router.push(this.to);
+      this.$emit("click");
     },
   },
 };

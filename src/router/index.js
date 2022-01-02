@@ -10,6 +10,22 @@ const routes = [
     component: () => import(`@/views/index/index.vue`)
   },
   {
+    path: '/taobao/list',
+    name: 'taobaoList',
+    meta: {
+      title: '淘宝列表'
+    },
+    component: () => import(`@/views/fanli/taobao/list.vue`)
+  },
+  {
+    path: '/jd/list',
+    name: 'jdList',
+    meta: {
+      title: '京东列表'
+    },
+    component: () => import(`@/views/fanli/jd/list.vue`)
+  },
+  {
     path: '*',
     name: 'notFound',
     component: () => import(`@/views/404.vue`)
@@ -17,7 +33,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   routes
 })
 

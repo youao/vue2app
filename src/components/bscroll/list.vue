@@ -74,6 +74,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    probeType: {
+      type: Number,
+      default: 0,
+    },
     toTop: {
       type: Boolean,
       default: false,
@@ -110,6 +114,8 @@ export default {
       pullDownRefresh,
       bounce: this.bounce || this.pulldown,
       click: true,
+      probeType:
+        !this.probeType && (this.pulldown || this.pullUp) ? 2 : this.probeType,
     });
 
     this.scroll.on("scroll", this.scrollHandler);
@@ -120,10 +126,12 @@ export default {
   },
   methods: {
     scrollHandler(res) {
+      this.$emit("scroll", res);
+
       if (this.pulldown) {
         this.canRefresh = res.y >= this.threshold;
       }
-
+      
       const el = this.$refs.wrap;
       if (this.pullUp) {
         if (el.offsetHeight - res.y + this.pullUpThreshold >= el.scrollHeight) {
