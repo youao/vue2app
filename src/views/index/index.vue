@@ -7,6 +7,8 @@
 <script>
 import { mapState } from "vuex";
 import Banner from "@/components/bscroll/slide_plus/banner";
+import {getJdGoods} from '@/api/quan2';
+import {getJdSearch} from '@/api/meiquan';
 
 export default {
   components: {
@@ -23,7 +25,10 @@ export default {
       },
     }),
   },
-  mounted() {},
+  mounted() {
+    getJdGoods()
+    // getJdSearch();
+  },
   methods: {
     onRefresh() {
       this.$store.dispatch("APPINFO", 1).finally(() => {

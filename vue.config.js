@@ -1,6 +1,4 @@
-const { VUE_APP_ENV, VUE_APP_MODE, VUE_APP_URL } = process.env;
-console.log(VUE_APP_ENV, VUE_APP_MODE)
-
+const { VUE_APP_ENV } = process.env;
 const fs = require('fs')
 const path = require('path')
 const resolve = (dir) => path.join(__dirname, dir)
@@ -38,9 +36,15 @@ module.exports = {
         port: 8090,
         proxy: {
             '/meiquan': {
-                target: VUE_APP_URL,
+                target: 'http://app.luckquan.com',
                 pathRewrite: {
-                    '^/meiquan': VUE_APP_URL
+                    '^/meiquan': ''
+                }
+            },
+            '/quan2': {
+                target: 'http://quan2.meiquan8.com',
+                pathRewrite: {
+                    '^/quan2': ''
                 }
             }
         }

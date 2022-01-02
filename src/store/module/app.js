@@ -1,5 +1,5 @@
 import storage from '@/utils/storage'
-import request from '@/utils/request'
+import { getApiSet } from '@/api/meiquan'
 
 export default {
     state: () => ({
@@ -31,9 +31,7 @@ export default {
                 return Promise.resolve(state.appInfo);
             }
             return new Promise((reslove, reject) => {
-                request.get("api/set", '', {
-                    cache: 60
-                }).then((res) => {
+                getApiSet().then((res) => {
                     commit("UPDATE_APPINFO", res.r.appinfo);
                     reslove(res.r.appinfo);
                 }).catch((err) => {
