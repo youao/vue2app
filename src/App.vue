@@ -1,13 +1,20 @@
 <template>
-  <div>
-    <router-view />
+  <div class="app">
+    <div class="app-content">
+      <router-view />
+    </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
+import Footer from "@/components/footer";
 export default {
+  components: {
+    Footer,
+  },
   created() {
-    this.$store.dispatch('APPINFO')
+    this.$store.dispatch("APPINFO");
   },
 };
 </script>
@@ -28,5 +35,17 @@ input {
   border: 0;
   outline: none;
   background: none;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
 }
 </style>

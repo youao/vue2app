@@ -6,7 +6,8 @@
           <img :src="item.img" alt="" />
         </div>
         <div class="info">
-          <div>{{ item.title }}</div>
+          <div class="title">{{ item.title }}</div>
+          <div></div>
         </div>
       </div>
     </div>

@@ -88,7 +88,7 @@ export default {
 
 <style scoped lang="scss">
 .page {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
