@@ -37,6 +37,7 @@ const routes = [
     path: '/user',
     name: 'user',
     meta: {
+      title: '个人中心',
       auth: true
     },
     component: () => import(`@/views/user/index.vue`)
@@ -44,6 +45,9 @@ const routes = [
   {
     path: '/login',
     name: 'login',
+    meta: {
+      title: '登录'
+    },
     component: () => import(`@/views/user/login.vue`)
   },
   {

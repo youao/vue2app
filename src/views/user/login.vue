@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <Page>
     <div>login</div>
     <div>{{ token }}</div>
-  </div>
+  </Page>
 </template>
 
 <script>
